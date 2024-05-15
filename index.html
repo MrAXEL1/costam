@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papier, kamień, nożyce</title>
+</head>
+<body>
+
+
+
+
+        <input type="radio" name="a" value="papier" id="papier">Papier<br>
+        <input type="radio" name="a" value="kamien" id="kamien">Kamień<br>
+        <input type="radio" name="a" value="nozyce" id="nozyce">Nożyce<br>
+        <p id="wybor_komp"></p>
+        <p id="zagrales"></p>
+        <p id="rezultat"></p>
+
+
+        <button>sprawdz</button>
+
+
+
+    
+
+</body>
+
+<script>
+function funkcja(){
+let twoj_wybor
+let papier = document.getElementById("papier").checked;
+    if (papier == true){
+        twoj_wybor = 0
+    }
+let kamien = document.getElementById("kamien").checked;
+if (kamien == true){
+        twoj_wybor = 1
+    }
+let nozyce = document.getElementById("nozyce").checked;
+if (nozyce == true){
+        twoj_wybor = 2
+    }
+
+let komputer = Math.floor(Math.random() * 3);
+
+const zagrane = [];
+zagrane[0]= "papier";
+zagrane[1]= "kamien";
+zagrane[2]= "nożyce";
+
+
+if (komputer == twoj_wybor){
+    wynik = "Remis"
+}
+if ((komputer == twoj_wybor - 1) || (komputer == 2 && twoj_wybor == 0)){
+    wynik = "Przegrałeś"
+}
+if ((komputer == twoj_wybor + 1) || (komputer == 0 && twoj_wybor == 2)){
+    wynik = "Wygrałeś"
+}
+
+
+
+document.getElementById('wybor_komp').innerHTML = "Komputer zagrał " + (zagrane[komputer]);
+document.getElementById('zagrales').innerHTML = "Zagrałeś " + (zagrane[twoj_wybor])
+document.getElementById('rezultat').innerHTML = "Zagrałeś " + (wynik)
+
+
+}
+
+document.querySelector("button").addEventListener("click", ()=>funkcja())
+
+</script>
+
+</html>
